@@ -1,0 +1,30 @@
+<html>
+<head>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+<body>
+<div  class = 'header'>
+<span class='head1'>Catalog App</span>
+<span class='head2'>
+   {%if 'username' not in session %} 
+   <a class=button href="{{url_for('showLogin')}}" > Login </a> 
+   {% else %}
+   <a class=button href="{{url_for('disconnect')}}" > Logout </a>
+   {% endif %}
+</span>
+</div>
+
+<div class = 'grid-container'>
+<div class= 'delete'>
+<h1> Are you sure you want to delete {{itemToDelete.title}}? </h1>
+
+<form action="{{ url_for('deleteItem',titleinp = itemToDelete.title)}}" method = 'post'>
+<input type='submit', value = 'Delete'>
+</form>
+
+<a href = '{{url_for('dispCategoryItemdesc',category_id=itemd.cat_id,titleinp=itemd.title)}}'> Cancel </a>
+</div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+.header {
+    height: 50px;
+    padding-left: 200px;
+    background-color: #000080;
+    color: white; 
+}
+
+body{
+    background-color: #f1f1f1;
+}
+
+.grid-container{
+    display: grid;
+    margin-left: 200px;
+    margin-right: 100px;
+    padding-left: 30px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    grid-template-areas: 
+    'head1 head2'; 
+    'pane1 pane2';
+    grid-column-gap: 10px; 
+    grid-row-gap: 10px;  
+}
+
+a {
+    color: red;
+    text-decoration: none; 
+}   
+
+
+p {
+    color: red;
+    text-decoration: none; 
+}   
+
+.head1 {
+font-size:30;
+font-weight:bold;
+padding-left:35px;
+
+}
+
+.head2{
+padding-left: 600px;
+}
+
+.flash {
+color:green;
+}
+

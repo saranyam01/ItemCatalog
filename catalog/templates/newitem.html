@@ -1,0 +1,72 @@
+<html>
+<head>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+	<body>
+
+<div  class = 'header'>
+<span class='head1'>Catalog App</span>
+<span class='head2'>
+   {%if 'username' not in session %} 
+   <a class=button href="{{url_for('showLogin')}}" > Login </a> 
+   {% else %}
+   <a class=button href="{{url_for('disconnect')}}" > Logout </a>
+   {% endif %}
+</span>
+</div>
+
+
+
+
+<div class = 'grid-container'>
+
+<div class = 'panel'>
+<div class='new'>
+<h1> New Item </h1>
+
+<form action="{{ url_for('newItem')}}" method = 'post'>
+<div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+   </div>
+</div>
+<dl>
+	<dt>Title:</dt>
+		<dd><input type ='text' size='80' name='title' ></dd>
+	<dt>Description:</dt>
+		<dd><textarea name = 'description' rows='5' cols='50' ></textarea></dd>
+        <dt>Category:</dt>
+		<dd>
+                    <select name='category_id'> 
+                    <option value="" selected="selected"></option>      
+                    <option value=1>Soccer</option>
+                    <option value=2>Basketball</option>
+                    <option value=3>Baseball</option>
+                    <option value=4>Frisbee</option>
+                    <option value=5>Snowboarding</option>
+                    <option value=6>Rockclimbing</option>
+                    <option value=7>Foosball</option>
+                    <option value=8>Skating</option>  
+                    <option value=9>Hockey</option>      
+                    </select>  </dd>
+
+</dl>
+
+
+<input type='submit' value='Create'>
+
+<a href = '{{url_for('dispCategory')}}'> Cancel </a>
+</div>
+</div>
+</form>
+</body>
+</html>

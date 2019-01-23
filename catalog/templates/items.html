@@ -1,0 +1,55 @@
+<html>
+
+<head>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+
+
+<div  class = 'header'>
+<span class='head1'>Catalog App</span>
+<span class='head2'>
+   {%if 'username' not in session %} 
+   <a class=button href="{{url_for('showLogin')}}" > Login </a> 
+   {% else %}
+   <a class=button href="{{url_for('disconnect')}}" > Logout </a>
+   {% endif %}
+</span>
+</div>
+
+
+<div class = 'grid-container'>
+   <div class = 'pane1'>
+   <h2>Categories</h2>
+   {% for category in categories %}
+   <a href = "{{url_for('dispCategoryItems', category_id=category.id)}}"> {{category.name}}</a> <br>
+   {% endfor %} 
+   </div>
+   
+   <div class = 'pane2'>
+   <div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+             <strong> {{ message }} </strong> 
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+   </div> 
+   <h2>{{categoryn.cname}} Items ({{categoryn.ccount}} items)</h2>
+   {% for item in items %}
+   <a href = "{{url_for('dispCategoryItemdesc', category_id=categoryn.cid, titleinp=item.title)}}">  
+   {{item.title}} </a><br>
+   {% endfor %}
+   </div>
+
+</div>
+
+</body>
+
+</html>

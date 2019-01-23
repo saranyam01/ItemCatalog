@@ -1,0 +1,32 @@
+<html>
+
+<head>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style1.css') }}">
+</head>
+
+<body>
+
+
+<div  class = 'header'>
+<span class='head1'>Catalog App</span>
+<span class='head2'>
+   {%if 'username' not in session %} 
+   <a class=button href="{{url_for('showLogin')}}" > Login </a> 
+   {% else %}
+   <a class=button href="{{url_for('disconnect')}}" > Logout </a>
+   {% endif %}
+</span>
+</div>
+
+
+<div class = 'grid-container'>
+   <div class = 'pane'>
+   <h2>{{itemd.title}}</h2>
+   <p> {{itemd.description}}</p> 
+   </div> 
+   
+</div>
+
+</body>
+
+</html>
